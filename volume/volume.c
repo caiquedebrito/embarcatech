@@ -20,3 +20,12 @@ float metro_cubico_para_litro(float metro_cubico) {
     return metro_cubico * 1000.0;
 }
 
+// Função para converter mililitro para metro cúbico
+float mililitro_para_metro_cubico(float mililitro) {
+    return mililitro / 1000000.0;
+}
+
+// Função para converter metro cúbico para mililitro
+float metro_cubico_para_mililitro(float metro_cubico) {
+    return metro_cubico * 1000000.0;
+}
