@@ -7,5 +7,6 @@ float metro_para_milimetro(float metro);
 float centimetro_para_metro(float centimetro);
 float centimetro_para_milimetro(float centimetro);
 float milimetro_para_metro(float milimetro);
+float milimetro_para_centimetro(float milimetro);
 
 #endif // COMPRIMENTO_H
