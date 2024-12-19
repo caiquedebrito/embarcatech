@@ -14,3 +14,8 @@ float metro_para_milimetro(float metro) {
 float centimetro_para_metro(float centimetro) {
     return centimetro / 100.0;
 }
+
+// Função para converter centímetros para milímetros
+float centimetro_para_milimetro(float centimetro) {
+    return centimetro * 10.0;
+}
