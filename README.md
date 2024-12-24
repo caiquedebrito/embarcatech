@@ -13,6 +13,7 @@ O programa realiza as seguintes conversões de unidades:
 - **Temperatura**: Conversão entre Celsius, Fahrenheit e Kelvin.
 - **Unidades de Área**: Conversão entre metro quadrado e centímetro quadrado.
 - **Comprimento**: Conversão entre metro, centímetro e milímetro.
+- **Potência**: Converte a potência em watts para hp
 
 ## Divisão de Tarefas
 
@@ -21,7 +22,7 @@ Cada integrante do grupo foi responsável por implementar um módulo do programa
 - **Ana Beatriz Silva Aragão**: Unidades de Área
 - **Caique de Brito Freitas**: Unidades de Comprimento
 - **Diego Farias de Freitas**: Unidades de Volume
-- **Devid Henrique Pereira dos Santos**: ""
+- **Devid Henrique Pereira dos Santos**: Unidades de potência
 - **Geovani da Silva Reis**: ""
 - **Juan Pablo Azevedo Sousa**: Unidades de Massa
 - **Renan dos Santos Lima**: Unidades de Temperatura
