@@ -35,6 +35,57 @@ O repositório foi estruturado para facilitar o desenvolvimento colaborativo:
 3. Issues e labels foram utilizadas para acompanhar o progresso de cada módulo.
 4. Pull requests foram criados e revisados pelo time antes de serem integrados ao branch principal.
 
+## Pré-requisitos do Projeto
+
+Para que o programa compile e execute sem problemas, você precisará ter instalado em sua máquina o compilador gcc e o make.
+
+### Para Linux (Ubuntu)
+
+Atualize os repositórios:
+```bash
+sudo apt update
+```
+
+Instale o GCC e Make:
+```bash
+sudo apt install build-essential
+```
+
+Verifique a instalação:
+
+Para verificar o GCC:
+```bash
+gcc --version
+```
+
+Para verificar o Make:
+```bash
+make --version
+```
+
+### Para Windows
+
+Baixe e instale o MinGW-w64:
+
+Acesse [winlibs.com](https://winlibs.com/) e baixe a versão mais recente do GCC.
+
+Extraia os arquivos:
+
+Extraia o conteúdo para uma pasta, por exemplo, `C:\mingw64`.
+
+Adicione o binário ao PATH:
+
+O binário está localizado em `C:\mingw64\bin`. Adicione esse caminho à variável de ambiente PATH:
+- Windows 10/11: Pesquise por "Variáveis de Ambiente" > Edite a variável PATH > Adicione o caminho.
+
+Verifique a instalação:
+
+No terminal do Windows (cmd ou PowerShell), digite:
+```bash
+gcc --version
+make --version
+```
+
 ## Instruções de Uso
 
 Para utilizar o programa:
@@ -42,14 +93,18 @@ Para utilizar o programa:
 1. Clone o repositório em sua máquina local usando o comando:
    ```bash
    git clone https://github.com/caiquedebrito/embarcatech
+   ```
 
-2. Compile o programa utilizando um compilador C (como gcc). Exemplo:
+2. Compile o program utilizando o make:
     ```bash
-    gcc -o conversor conversor.c
+    make
+    ```
+    O comando acima criará um executável (programa.exe) na raiz do projeto
 
 3. Execute o programa:
-    ```bash
-    ./conversor
+   ```bash
+   ./programa.exe
+   ```
 
 4. Escolha o tipo de conversão desejada e siga as instruções exibidas na tela.
 
