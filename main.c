@@ -3,10 +3,12 @@
 #include "massa/massa.h"
 #include "comprimento/comprimento.h"
 #include "volume/volume.h"
+#include "potencia/potencia.h"
 
 void menu_massa();
 void menu_comprimento();
 void menu_volume();
+void menu_potencia();
 
 int main() {
     int opcao;
@@ -17,6 +19,7 @@ int main() {
         printf("1. Conversões de Massa\n");
         printf("2. Conversões de Comprimento\n");
         printf("3. Conversões de Volume\n");
+        printf("4. Conversões de Potencia\n");
         printf("0. Sair\n");
         printf("Escolha uma opção: ");
         scanf("%d", &opcao);
@@ -30,6 +33,9 @@ int main() {
                 break;
             case 3:
                 menu_volume();
+                break;
+            case 4:
+                menu_potencia();
                 break;
             case 0:
                 printf("Saindo...\n");
@@ -148,6 +154,46 @@ void menu_volume() {
             case 5: resultado = mililitro_para_metro_cubico(valor); break;
             case 6: resultado = metro_cubico_para_mililitro(valor); break;
             default: printf("Opção inválida!\n"); continue;
+        }
+
+        printf("Resultado: %.6f\n", resultado);
+        printf("Pressione a tecla Enter para continuar...");
+        getchar(); getchar();
+    } while (opcao != 0);
+}
+
+void menu_potencia() {
+    int opcao;
+    float valor, resultado;
+
+    do {
+        system("clear || cls");
+        printf("MENU POTÊNCIA\n");
+        printf("1. Watt para HP\n");
+        printf("2. Watt para kW\n");
+        printf("3. Watt para CV\n");
+        printf("4. HP para Watt\n");
+        printf("5. kW para Watt\n");
+        printf("6. CV para Watt\n");
+        printf("0. Voltar\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 0) break;
+
+        printf("Digite o valor: ");
+        scanf("%f", &valor);
+
+        switch (opcao) {
+            case 1: resultado = watt_para_hp(valor); break;
+            case 2: resultado = watt_para_kw(valor); break;
+            case 3: resultado = watt_para_cv(valor); break;
+            case 4: resultado = hp_para_watt(valor); break;
+            case 5: resultado = kw_para_watt(valor); break;
+            case 6: resultado = cv_para_watt(valor); break;
+            default: 
+                printf("Opção inválida!\n"); 
+                continue;
         }
 
         printf("Resultado: %.6f\n", resultado);
