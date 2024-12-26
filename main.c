@@ -4,11 +4,13 @@
 #include "comprimento/comprimento.h"
 #include "volume/volume.h"
 #include "area/area.h"
+#include "temperatura/temperatura.h"
 
 void menu_massa();
 void menu_comprimento();
 void menu_volume();
 void menu_area();
+void menu_temperatura();
 
 int main() {
     int opcao;
@@ -20,6 +22,7 @@ int main() {
         printf("2. Conversões de Comprimento\n");
         printf("3. Conversões de Volume\n");
         printf("4. Conversões de Área\n");
+        printf("5. Conversões de Temperatura\n");
         printf("0. Sair\n");
         printf("Escolha uma opção: ");
         scanf("%d", &opcao);
@@ -36,6 +39,9 @@ int main() {
                 break;
             case 4: 
                 menu_area();
+                break;
+            case 5:
+                menu_temperatura();
                 break;
             case 0:
                 printf("Saindo...\n");
@@ -199,4 +205,43 @@ void menu_area(){
         getchar();
         getchar();
     }while (opcao != 0);
+}
+
+void menu_temperatura(){
+    int opcao;
+    float valor, resultado;
+
+    do{
+        system("clear || cls");
+        printf("MENU TEMPERATURA\n");
+        printf("1. Celsius para Fahrenheit\n");
+        printf("2. Fahrenheit para Celsius\n");
+        printf("3. Celsius para Kelvin\n");
+        printf("4. Kelvin para Celsius\n");
+        printf("5. Fahrenheit para Kelvin\n");
+        printf("6. Kelvin para Fahrenheit\n");
+        printf("0. Voltar\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 0) break;
+
+        printf("Digite o valor: ");
+        scanf("%f", &valor);
+
+        switch(opcao){
+            case 1: resultado = celsius_para_fahrenheit(valor); break;
+            case 2: resultado = fahrenheit_para_celsius(valor); break;
+            case 3: resultado = celsius_para_kelvin(valor); break;
+            case 4: resultado = kelvin_para_celsius(valor); break;
+            case 5: resultado = fahrenheit_para_kelvin(valor); break;
+            case 6: resultado = kelvin_para_fahrenheit(valor); break;
+            default: printf("Opção inválida!\n"); continue;
+        }
+
+        printf("Resultado: %.6f\n", resultado);
+        printf("Pressione a tecla Enter para continuar...");
+        getchar();
+        getchar();
+    }while(opcao != 0);
 }

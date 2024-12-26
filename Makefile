@@ -5,7 +5,8 @@ SRC = main.c \
       comprimento/comprimento.c \
       massa/massa.c \
       volume/volume.c \
-	  area/area.c 
+	  	area/area.c  \
+			temperatura/temperatura.c \
 
 OBJ = $(SRC:.c=.o)
 TARGET = programa
