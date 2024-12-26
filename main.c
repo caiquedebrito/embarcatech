@@ -4,11 +4,15 @@
 #include "comprimento/comprimento.h"
 #include "volume/volume.h"
 #include "potencia/potencia.h"
+#include "area/area.h"
+#include "renan-temperatura/temperatura.h"
 
 void menu_massa();
 void menu_comprimento();
 void menu_volume();
 void menu_potencia();
+void menu_area();
+void menu_temperatura();
 
 int main() {
     int opcao;
@@ -20,6 +24,8 @@ int main() {
         printf("2. Conversões de Comprimento\n");
         printf("3. Conversões de Volume\n");
         printf("4. Conversões de Potencia\n");
+        printf("5. Conversões de Area\n");
+        printf("6. Conversões de Temperatura\n");
         printf("0. Sair\n");
         printf("Escolha uma opção: ");
         scanf("%d", &opcao);
@@ -36,6 +42,12 @@ int main() {
                 break;
             case 4:
                 menu_potencia();
+                break;
+            case 5:
+                menu_area();
+                break;
+            case 6:
+                menu_temperatura();
                 break;
             case 0:
                 printf("Saindo...\n");
@@ -194,6 +206,83 @@ void menu_potencia() {
             default: 
                 printf("Opção inválida!\n"); 
                 continue;
+        }
+
+        printf("Resultado: %.6f\n", resultado);
+        printf("Pressione a tecla Enter para continuar...");
+        getchar(); getchar();
+    } while (opcao != 0);
+}
+
+void menu_area(){
+    int opcao;
+    float valor, resultado;
+
+    do{ 
+        system ("clear || cls");
+        printf("MENU ÁREA\n");
+        printf("1. Metros quadrados para Centímetros quadrados\n");
+        printf("2. Metros quadrados para Milímetros quadrados\n");
+        printf("3. Centímetros quadrados para Metros quadrados\n");
+        printf("4. Centímetros quadrados para Milímetros quadrados\n");
+        printf("5. Milímetros quadrados para Metros quadrados\n");
+        printf("6. Milímetros quadrados para Centímetros quadrados\n");
+        printf("0. Voltar\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 0) break;
+            
+        printf("Digite o valor: ");
+        scanf("%f", &valor);
+
+        switch(opcao){
+            case 1: resultado = metrosQuadradosParaCentimetrosQuadrados(valor); break;
+            case 2: resultado = metrosQuadradosParaMilimetrosQuadrados(valor); break;
+            case 3: resultado = centimetrosQuadradosParaMetrosQuadrados(valor); break;
+            case 4: resultado = centimetrosQuadradosParaMilimetrosQuadrados(valor); break;
+            case 5: resultado = milimetrosQuadradosParaMetrosQuadrados(valor); break;
+            case 6: resultado = milimetrosQuadradosParaCentimetrosQuadrados(valor); break;
+            default: printf("Opção inválida!\n"); continue;
+        }
+        
+        printf("Resultado: %.6f\n", resultado);
+        printf("Pressione a tecla Enter para continuar...");
+        getchar();
+        getchar();
+    }while (opcao != 0);
+}
+
+void menu_temperatura() {
+    int opcao;
+    float valor, resultado;
+
+    do {
+        system("clear || cls");
+        printf("MENU TEMPERATURA\n");
+        printf("1. Celsius para Fahrenheit\n");
+        printf("2. Celsius para Kelvin\n");
+        printf("3. Fahrenheit para Celsius\n");
+        printf("4. Kelvin para Celsius\n");
+        printf("5. Fahrenheit para Kelvin\n");
+        printf("6. Kelvin para Fahrenheit\n");
+        printf("0. Voltar\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 0) break;
+
+        printf("Digite o valor: ");
+        scanf("%f", &valor);
+
+        switch (opcao) {
+            case 1: resultado = celsius_para_fahrenheit(valor); break;
+            case 2: resultado = celsius_para_kelvin(valor); break;
+            case 3: resultado = fahrenheit_para_celsius(valor); break;
+            case 4: resultado = kelvin_para_celsius(valor); break;
+            case 5: resultado = fahrenheit_para_kelvin(valor); break;
+            case 6: resultado = kelvin_para_fahrenheit(valor); break;
+            default: printf("Opção inválida!\n"); continue;
         }
 
         printf("Resultado: %.6f\n", resultado);
