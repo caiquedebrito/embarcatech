@@ -3,10 +3,12 @@
 #include "massa/massa.h"
 #include "comprimento/comprimento.h"
 #include "volume/volume.h"
+#include "area/area.h"
 
 void menu_massa();
 void menu_comprimento();
 void menu_volume();
+void menu_area();
 
 int main() {
     int opcao;
@@ -17,6 +19,7 @@ int main() {
         printf("1. Conversões de Massa\n");
         printf("2. Conversões de Comprimento\n");
         printf("3. Conversões de Volume\n");
+        printf("4. Conversões de Área\n");
         printf("0. Sair\n");
         printf("Escolha uma opção: ");
         scanf("%d", &opcao);
@@ -30,6 +33,9 @@ int main() {
                 break;
             case 3:
                 menu_volume();
+                break;
+            case 4: 
+                menu_area();
                 break;
             case 0:
                 printf("Saindo...\n");
@@ -154,4 +160,43 @@ void menu_volume() {
         printf("Pressione a tecla Enter para continuar...");
         getchar(); getchar();
     } while (opcao != 0);
+}
+
+void menu_area(){
+    int opcao;
+    float valor, resultado;
+
+    do{ 
+        system ("clear || cls");
+        printf("MENU ÁREA\n");
+        printf("1. Metros quadrados para Centímetros quadrados\n");
+        printf("2. Metros quadrados para Milímetros quadrados\n");
+        printf("3. Centímetros quadrados para Metros quadrados\n");
+        printf("4. Centímetros quadrados para Milímetros quadrados\n");
+        printf("5. Milímetros quadrados para Metros quadrados\n");
+        printf("6. Milímetros quadrados para Centímetros quadrados\n");
+        printf("0. Voltar\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 0) break;
+            
+        printf("Digite o valor: ");
+        scanf("%f", &valor);
+
+        switch(opcao){
+            case 1: resultado = metrosQuadradosParaCentimetrosQuadrados(valor); break;
+            case 2: resultado = metrosQuadradosParaMilimetrosQuadrados(valor); break;
+            case 3: resultado = centimetrosQuadradosParaMetrosQuadrados(valor); break;
+            case 4: resultado = centimetrosQuadradosParaMilimetrosQuadrados(valor); break;
+            case 5: resultado = milimetrosQuadradosParaMetrosQuadrados(valor); break;
+            case 6: resultado = milimetrosQuadradosParaCentimetrosQuadrados(valor); break;
+            default: printf("Opção inválida!\n"); continue;
+        }
+        
+        printf("Resultado: %.6f\n", resultado);
+        printf("Pressione a tecla Enter para continuar...");
+        getchar();
+        getchar();
+    }while (opcao != 0);
 }
