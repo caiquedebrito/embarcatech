@@ -7,6 +7,7 @@ SRC = main.c \
       volume/volume.c \
 	  	area/area.c  \
 			temperatura/temperatura.c \
+			potencia/potencia.c 
 
 OBJ = $(SRC:.c=.o)
 TARGET = programa

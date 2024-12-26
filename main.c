@@ -201,7 +201,7 @@ void menu_potencia() {
         if (opcao == 0) break;
 
         printf("Digite o valor: ");
-        scanf("%f", &valor);
+        validar_float(&valor);
 
         switch (opcao) {
             case 1: resultado = watt_para_hp(valor); break;
@@ -242,7 +242,6 @@ void menu_area(){
         if (opcao == 0) break;
             
         printf("Digite o valor: ");
-
         validar_float(&valor);
 
         switch(opcao){
@@ -283,7 +282,6 @@ void menu_temperatura(){
         if (opcao == 0) break;
 
         printf("Digite o valor: ");
-
         validar_float(&valor);
 
         switch(opcao){
