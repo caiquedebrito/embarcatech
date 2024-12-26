@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "massa/massa.h"
 #include "comprimento/comprimento.h"
 #include "volume/volume.h"
@@ -11,6 +12,9 @@ void menu_comprimento();
 void menu_volume();
 void menu_area();
 void menu_temperatura();
+
+void validar_int(int *entrada);
+void validar_float(float *entrada);
 
 int main() {
     int opcao;
@@ -24,8 +28,8 @@ int main() {
         printf("4. Conversões de Área\n");
         printf("5. Conversões de Temperatura\n");
         printf("0. Sair\n");
-        printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+        
+        validar_int(&opcao);
 
         switch (opcao) {
             case 1:
@@ -69,12 +73,13 @@ void menu_massa() {
         printf("6. Tonelada para Grama\n");
         printf("0. Voltar\n");
         printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+        
+        validar_int(&opcao);
 
         if (opcao == 0) break;
 
         printf("Digite o valor: ");
-        scanf("%f", &valor);
+        validar_float(&valor);
 
         switch (opcao) {
             case 1: resultado = quilograma_para_grama(valor); break;
@@ -107,12 +112,13 @@ void menu_comprimento() {
         printf("6. Milímetro para Centímetro\n");
         printf("0. Voltar\n");
         printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+        
+        validar_int(&opcao);
 
         if (opcao == 0) break;
 
         printf("Digite o valor: ");
-        scanf("%f", &valor);
+        validar_float(&valor);
 
         switch (opcao) {
             case 1: resultado = metro_para_centimetro(valor); break;
@@ -145,12 +151,13 @@ void menu_volume() {
         printf("6. Metro Cúbico para Mililitro\n");
         printf("0. Voltar\n");
         printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+
+        validar_int(&opcao);
 
         if (opcao == 0) break;
 
         printf("Digite o valor: ");
-        scanf("%f", &valor);
+        validar_float(&valor);
 
         switch (opcao) {
             case 1: resultado = litro_para_mililitro(valor); break;
@@ -183,12 +190,13 @@ void menu_area(){
         printf("6. Milímetros quadrados para Centímetros quadrados\n");
         printf("0. Voltar\n");
         printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+
+        validar_int(&opcao);
 
         if (opcao == 0) break;
             
         printf("Digite o valor: ");
-        scanf("%f", &valor);
+        validar_float(&valor);
 
         switch(opcao){
             case 1: resultado = metrosQuadradosParaCentimetrosQuadrados(valor); break;
@@ -222,12 +230,13 @@ void menu_temperatura(){
         printf("6. Kelvin para Fahrenheit\n");
         printf("0. Voltar\n");
         printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+
+        validar_int(&opcao);
 
         if (opcao == 0) break;
 
         printf("Digite o valor: ");
-        scanf("%f", &valor);
+        validar_float(&valor);
 
         switch(opcao){
             case 1: resultado = celsius_para_fahrenheit(valor); break;
@@ -244,4 +253,51 @@ void menu_temperatura(){
         getchar();
         getchar();
     }while(opcao != 0);
+}
+
+
+void validar_int(int *entrada) {
+    char input[100]; // Tamanho maior para garantir espaço suficiente
+
+    while (1) {
+        if (fgets(input, sizeof(input), stdin) != NULL) {
+            char *endptr;
+
+            // Remove o '\n' do final, caso esteja presente
+            input[strcspn(input, "\n")] = '\0';
+
+            *entrada = strtol(input, &endptr, 10);
+
+            // Verifica se a conversão foi bem-sucedida
+            if (*endptr == '\0') return;
+
+            printf("Entrada inválida. Digite novamente: ");
+        } else {
+            printf("Erro ao ler a entrada. Tente novamente.\n");
+            clearerr(stdin); // Limpa erros de entrada, se necessário
+        }
+    }
+}
+
+void validar_float(float *entrada) {
+    char input[100]; // Tamanho suficiente para capturar a entrada
+
+    while (1) {
+        if (fgets(input, sizeof(input), stdin) != NULL) {
+            char *endptr;
+
+            // Remove o '\n' do final, caso esteja presente
+            input[strcspn(input, "\n")] = '\0';
+
+            *entrada = strtof(input, &endptr);
+
+            // Verifica se a conversão foi bem-sucedida
+            if (*endptr == '\0') return;
+
+            printf("Entrada inválida. Digite novamente: ");
+        } else {
+            printf("Erro ao ler a entrada. Tente novamente.\n");
+            clearerr(stdin); // Limpa erros de entrada, se necessário
+        }
+    }
 }
