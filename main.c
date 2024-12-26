@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "massa/massa.h"
 #include "comprimento/comprimento.h"
 #include "volume/volume.h"
 #include "potencia/potencia.h"
 #include "area/area.h"
-#include "renan-temperatura/temperatura.h"
+#include "temperatura/temperatura.h"
 
 void menu_massa();
 void menu_comprimento();
@@ -13,6 +14,9 @@ void menu_volume();
 void menu_potencia();
 void menu_area();
 void menu_temperatura();
+
+void validar_int(int *entrada);
+void validar_float(float *entrada);
 
 int main() {
     int opcao;
@@ -27,8 +31,8 @@ int main() {
         printf("5. Conversões de Area\n");
         printf("6. Conversões de Temperatura\n");
         printf("0. Sair\n");
-        printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+        
+        validar_int(&opcao);
 
         switch (opcao) {
             case 1:
@@ -75,12 +79,13 @@ void menu_massa() {
         printf("6. Tonelada para Grama\n");
         printf("0. Voltar\n");
         printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+        
+        validar_int(&opcao);
 
         if (opcao == 0) break;
 
         printf("Digite o valor: ");
-        scanf("%f", &valor);
+        validar_float(&valor);
 
         switch (opcao) {
             case 1: resultado = quilograma_para_grama(valor); break;
@@ -113,12 +118,13 @@ void menu_comprimento() {
         printf("6. Milímetro para Centímetro\n");
         printf("0. Voltar\n");
         printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+        
+        validar_int(&opcao);
 
         if (opcao == 0) break;
 
         printf("Digite o valor: ");
-        scanf("%f", &valor);
+        validar_float(&valor);
 
         switch (opcao) {
             case 1: resultado = metro_para_centimetro(valor); break;
@@ -151,12 +157,13 @@ void menu_volume() {
         printf("6. Metro Cúbico para Mililitro\n");
         printf("0. Voltar\n");
         printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+
+        validar_int(&opcao);
 
         if (opcao == 0) break;
 
         printf("Digite o valor: ");
-        scanf("%f", &valor);
+        validar_float(&valor);
 
         switch (opcao) {
             case 1: resultado = litro_para_mililitro(valor); break;
@@ -229,12 +236,14 @@ void menu_area(){
         printf("6. Milímetros quadrados para Centímetros quadrados\n");
         printf("0. Voltar\n");
         printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+
+        validar_int(&opcao);
 
         if (opcao == 0) break;
             
         printf("Digite o valor: ");
-        scanf("%f", &valor);
+
+        validar_float(&valor);
 
         switch(opcao){
             case 1: resultado = metrosQuadradosParaCentimetrosQuadrados(valor); break;
@@ -253,32 +262,34 @@ void menu_area(){
     }while (opcao != 0);
 }
 
-void menu_temperatura() {
+void menu_temperatura(){
     int opcao;
     float valor, resultado;
 
-    do {
+    do{
         system("clear || cls");
         printf("MENU TEMPERATURA\n");
         printf("1. Celsius para Fahrenheit\n");
-        printf("2. Celsius para Kelvin\n");
-        printf("3. Fahrenheit para Celsius\n");
+        printf("2. Fahrenheit para Celsius\n");
+        printf("3. Celsius para Kelvin\n");
         printf("4. Kelvin para Celsius\n");
         printf("5. Fahrenheit para Kelvin\n");
         printf("6. Kelvin para Fahrenheit\n");
         printf("0. Voltar\n");
         printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+
+        validar_int(&opcao);
 
         if (opcao == 0) break;
 
         printf("Digite o valor: ");
-        scanf("%f", &valor);
 
-        switch (opcao) {
+        validar_float(&valor);
+
+        switch(opcao){
             case 1: resultado = celsius_para_fahrenheit(valor); break;
-            case 2: resultado = celsius_para_kelvin(valor); break;
-            case 3: resultado = fahrenheit_para_celsius(valor); break;
+            case 2: resultado = fahrenheit_para_celsius(valor); break;
+            case 3: resultado = celsius_para_kelvin(valor); break;
             case 4: resultado = kelvin_para_celsius(valor); break;
             case 5: resultado = fahrenheit_para_kelvin(valor); break;
             case 6: resultado = kelvin_para_fahrenheit(valor); break;
@@ -289,4 +300,51 @@ void menu_temperatura() {
         printf("Pressione a tecla Enter para continuar...");
         getchar(); getchar();
     } while (opcao != 0);
+}
+
+
+void validar_int(int *entrada) {
+    char input[100]; // Tamanho maior para garantir espaço suficiente
+
+    while (1) {
+        if (fgets(input, sizeof(input), stdin) != NULL) {
+            char *endptr;
+
+            // Remove o '\n' do final, caso esteja presente
+            input[strcspn(input, "\n")] = '\0';
+
+            *entrada = strtol(input, &endptr, 10);
+
+            // Verifica se a conversão foi bem-sucedida
+            if (*endptr == '\0') return;
+
+            printf("Entrada inválida. Digite novamente: ");
+        } else {
+            printf("Erro ao ler a entrada. Tente novamente.\n");
+            clearerr(stdin); // Limpa erros de entrada, se necessário
+        }
+    }
+}
+
+void validar_float(float *entrada) {
+    char input[100]; // Tamanho suficiente para capturar a entrada
+
+    while (1) {
+        if (fgets(input, sizeof(input), stdin) != NULL) {
+            char *endptr;
+
+            // Remove o '\n' do final, caso esteja presente
+            input[strcspn(input, "\n")] = '\0';
+
+            *entrada = strtof(input, &endptr);
+
+            // Verifica se a conversão foi bem-sucedida
+            if (*endptr == '\0') return;
+
+            printf("Entrada inválida. Digite novamente: ");
+        } else {
+            printf("Erro ao ler a entrada. Tente novamente.\n");
+            clearerr(stdin); // Limpa erros de entrada, se necessário
+        }
+    }
 }
