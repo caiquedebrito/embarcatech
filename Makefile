@@ -4,7 +4,8 @@ CFLAGS = -Wall -Wextra -I.
 SRC = main.c \
       comprimento/comprimento.c \
       massa/massa.c \
-      volume/volume.c 
+      volume/volume.c \
+	  area/area.c 
 
 OBJ = $(SRC:.c=.o)
 TARGET = programa
