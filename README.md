@@ -23,7 +23,6 @@ Cada integrante do grupo foi responsável por implementar um módulo do programa
 - **Caique de Brito Freitas**: Unidades de Comprimento
 - **Diego Farias de Freitas**: Unidades de Volume
 - **Devid Henrique Pereira dos Santos**: Unidades de potência
-- **Geovani da Silva Reis**: ""
 - **Juan Pablo Azevedo Sousa**: Unidades de Massa
 - **Renan dos Santos Lima**: Unidades de Temperatura
 
