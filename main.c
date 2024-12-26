@@ -4,12 +4,14 @@
 #include "massa/massa.h"
 #include "comprimento/comprimento.h"
 #include "volume/volume.h"
+#include "potencia/potencia.h"
 #include "area/area.h"
 #include "temperatura/temperatura.h"
 
 void menu_massa();
 void menu_comprimento();
 void menu_volume();
+void menu_potencia();
 void menu_area();
 void menu_temperatura();
 
@@ -25,8 +27,9 @@ int main() {
         printf("1. Conversões de Massa\n");
         printf("2. Conversões de Comprimento\n");
         printf("3. Conversões de Volume\n");
-        printf("4. Conversões de Área\n");
-        printf("5. Conversões de Temperatura\n");
+        printf("4. Conversões de Potencia\n");
+        printf("5. Conversões de Area\n");
+        printf("6. Conversões de Temperatura\n");
         printf("0. Sair\n");
         
         validar_int(&opcao);
@@ -41,10 +44,13 @@ int main() {
             case 3:
                 menu_volume();
                 break;
-            case 4: 
-                menu_area();
+            case 4:
+                menu_potencia();
                 break;
             case 5:
+                menu_area();
+                break;
+            case 6:
                 menu_temperatura();
                 break;
             case 0:
@@ -175,6 +181,46 @@ void menu_volume() {
     } while (opcao != 0);
 }
 
+void menu_potencia() {
+    int opcao;
+    float valor, resultado;
+
+    do {
+        system("clear || cls");
+        printf("MENU POTÊNCIA\n");
+        printf("1. Watt para HP\n");
+        printf("2. Watt para kW\n");
+        printf("3. Watt para CV\n");
+        printf("4. HP para Watt\n");
+        printf("5. kW para Watt\n");
+        printf("6. CV para Watt\n");
+        printf("0. Voltar\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 0) break;
+
+        printf("Digite o valor: ");
+        scanf("%f", &valor);
+
+        switch (opcao) {
+            case 1: resultado = watt_para_hp(valor); break;
+            case 2: resultado = watt_para_kw(valor); break;
+            case 3: resultado = watt_para_cv(valor); break;
+            case 4: resultado = hp_para_watt(valor); break;
+            case 5: resultado = kw_para_watt(valor); break;
+            case 6: resultado = cv_para_watt(valor); break;
+            default: 
+                printf("Opção inválida!\n"); 
+                continue;
+        }
+
+        printf("Resultado: %.6f\n", resultado);
+        printf("Pressione a tecla Enter para continuar...");
+        getchar(); getchar();
+    } while (opcao != 0);
+}
+
 void menu_area(){
     int opcao;
     float valor, resultado;
@@ -196,6 +242,7 @@ void menu_area(){
         if (opcao == 0) break;
             
         printf("Digite o valor: ");
+
         validar_float(&valor);
 
         switch(opcao){
@@ -236,6 +283,7 @@ void menu_temperatura(){
         if (opcao == 0) break;
 
         printf("Digite o valor: ");
+
         validar_float(&valor);
 
         switch(opcao){
@@ -250,9 +298,8 @@ void menu_temperatura(){
 
         printf("Resultado: %.6f\n", resultado);
         printf("Pressione a tecla Enter para continuar...");
-        getchar();
-        getchar();
-    }while(opcao != 0);
+        getchar(); getchar();
+    } while (opcao != 0);
 }
 
 

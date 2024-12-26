@@ -1,3 +1,6 @@
 *.exe
 *.o
-**\output*
+**\output
+.vscode/
+potencia.c
+potencia.h
